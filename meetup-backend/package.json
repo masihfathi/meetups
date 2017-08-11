@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "NODE_ENV=development node index.js"
   },
   "repository": {
     "type": "git",
@@ -24,10 +25,14 @@
   "devDependencies": {
     "babel-polyfill": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
-    "babel-register": "^6.24.1"
+    "babel-register": "^6.24.1",
+    "nodeman": "^1.1.2"
   },
   "dependencies": {
+    "babel-preset-stage-0": "^6.24.1",
+    "body-parser": "^1.17.2",
     "express": "^4.15.4",
-    "mongoose": "^4.7.7"
+    "mongoose": "^4.7.7",
+    "morgan": "^1.8.2"
   }
 }
