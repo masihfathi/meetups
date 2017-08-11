@@ -1,2 +1,2 @@
 # meetups
-a project to manage meetups in ios, android, desktop , web
+a project to manage meetups in ios, android, desktop and web
