@@ -1,3 +1,4 @@
 /meetup-backend/node_modules
 /nbproject/private/
-/nbproject
+nbproject
+.gitignore
