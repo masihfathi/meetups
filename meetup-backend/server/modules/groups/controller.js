@@ -10,7 +10,7 @@ export const createGroup = async(req, res) => {
             error: true,
             message: 'name must be provided'
         });
-    } else if (typeof name !== 'String') {
+    } else if (typeof name !== 'string') {
         return res.status(400).json({
             error: true,
             message: 'name must be a string'
@@ -26,7 +26,7 @@ export const createGroup = async(req, res) => {
             error: true,
             message: 'description must be provided'
         });
-    } else if (typeof description !== 'String') {
+    } else if (typeof description !== 'string') {
         return res.status(400).json({
             error: true,
             message: 'description must be a string'
