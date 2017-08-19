@@ -41,7 +41,7 @@ export const createGroup = async(req, res) => {
     try {
         return res.status(201).json({error: false, group: await GROUP.save()});
     } catch (e) {
-        return res.status(400).json({error: true, message: 'Error when saving group'});
+        return res.status(400).json({error: true, message: e.message});
     }
 };
 /*
