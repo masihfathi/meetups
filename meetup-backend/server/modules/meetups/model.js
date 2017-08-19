@@ -13,6 +13,10 @@ const MEETUPSCHEMA = new Schema({
     },
     eventDate: {
         type: Date
+    },
+    group: {
+        type: Schema.Types.ObjectId,
+        ref: 'Group'
     }
 }, {timestamps: true});
 export default mongoose.model('Meetup', MEETUPSCHEMA);
