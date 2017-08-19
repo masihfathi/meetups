@@ -102,7 +102,7 @@ export const createGroupMeetup = async (req, res) => {
     } catch (e) {
         return res.status(400).json({
             error: true,
-            message: 'Meetup can not be created'
+            message: e.message
         });
     }
 };
@@ -115,7 +115,7 @@ export const getAllGroups = async (req,res) => {
     }catch (e) {
         return res.status(400).json({
             error:true,
-            message: 'Error with get all Groups'
+            message: e.message
         });
     }
 };
