@@ -1,7 +1,7 @@
 import express from 'express';
 import dbConfig from './config/config.js';
 import middlewaresConfig from './config/middlewares.js';
-import {MeetupRoutes} from './modules';
+import {MeetupRoutes,GroupRoutes} from './modules';
 const APP = express();
 /*
  * connect to db
@@ -14,7 +14,7 @@ middlewaresConfig(APP);
 /**
  * create api request
  */
-APP.use('/api',[MeetupRoutes]);
+APP.use('/api',[MeetupRoutes,GroupRoutes]);
 /**
  * 
  * @type process.env.PORT|.global.process.env.PORT|Number

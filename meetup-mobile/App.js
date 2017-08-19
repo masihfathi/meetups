@@ -1,7 +1,7 @@
-import React from 'react';
+import React,{Component} from 'react';
 import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 import {fetchMeetups} from './constants/api';
-export default class App extends React.Component {
+export default class App extends Component {
     static defaultProps = {
         fetchMeetups
     }
@@ -14,21 +14,20 @@ export default class App extends React.Component {
             loading: true
         });
         const data = await this.props.fetchMeetups();
-        this.setState({loading: false, meetups: data.meetups});
+        console.log('output'+data.meetups);
+        setTimeout( () => this.setState({loading: false, meetups: data.meetups}),2000);
     }
     render() {
-        if (this.state.loading == true) {
+        if (this.state.loading) {
             return (
                     <View style={styles.container}>
                         <ActivityIndicator size="large" color="red"/>
                     </View>
-                    )
+                    );
         }
         return (
                 <View style={styles.container}>
-                    {this.state.meetups.map((meetup, i) =>
-                        <Text key={i}>{meetup.title}</Text>
-                    )}
+                    {this.state.meetups.map( (meetup, i) => <Text key={i}>{meetup.title}</Text> )}
                 </View>
                 );
     }
