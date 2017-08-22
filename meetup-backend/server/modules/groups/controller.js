@@ -1,4 +1,5 @@
 import Group from './model';
+import { Meetup } from '../meetups';
 
 export const createGroup = async(req, res) => {
     const {name, description, category} = req.body;
@@ -93,11 +94,15 @@ export const createGroupMeetup = async (req, res) => {
         });
     }
     try {
-        const [SAVEDMEETUP,SAVEDGROUP] = await Group.addMeetup(groupId, {title, description});
+        // dar halat aval khroji tabe addMeetup array bod baraye hamin besorat array sakhte mishod
+        // const [SAVEDMEETUP,SAVEDGROUP] = await Group.addMeetup(groupId, {title, description});
+        // dar halat dovom khoroji tabe object bod 
+        const {meetup,group} = await Group.addMeetup(groupId, {title, description}) ;
+
         return res.status(201).json({
             error:false,
-            SAVEDMEETUP,
-            SAVEDGROUP
+            meetup,
+            group
         });
     } catch (e) {
         return res.status(400).json({
@@ -116,6 +121,37 @@ export const getAllGroups = async (req,res) => {
         return res.status(400).json({
             error:true,
             message: e.message
+        });
+    }
+};
+/*
+ * Get group meetup
+ */
+export const getGroupMeetups = async (req,res) => {
+    const {groupId} = req.params;
+    if(!groupId){
+        return res.status(400).json({
+            error: true,
+            message: 'You need to provide groupId'
+        });
+    }
+    // search to see if group exists
+    const GROUP = await Group.findById(groupId);
+     if(!GROUP){
+        return res.status(400).json({
+            error: true,
+            message: 'group not found'
+        });
+    }   
+    try{
+        return res.status(200).json({
+            error:false,
+            meetups: await Meetup.find({group:groupId}).populate('group','name')
+        });
+    }catch(e){
+        return res.status(400).json({
+            error:true,
+            message:e.message
         });
     }
 };

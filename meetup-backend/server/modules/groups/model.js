@@ -25,19 +25,38 @@ const GROUPSCHEMA = new Schema({
 /*
  * addMeetup @static method to add meetup
  */
-GROUPSCHEMA.statics.addMeetup = async function (id, args) {
+/*
+ GROUPSCHEMA.statics.addMeetup = async function (id, args) {
     //console.log("--------------------------------");
     const MEETUP = mongoose.model('Meetup');
     const GROUP = await this.findById(id);
-    //console.log('\n GROUP:\n', GROUP);
     const meetup = await new MEETUP({
-        ...args, GROUP
+    ...args, GROUP:id
     });
-    //console.log("--------------------------------");
-    //console.log('\n Meetup:\n', meetup);
+    console.log('\n GROUP:\n', Group);
+    console.log('\n GROUP ID:\n', Group.id);
+    console.log("--------------------------------");
+    console.log('\n Meetup:\n', meetup);
     GROUP.meetups.push(meetup);
     const result = Promise.all([meetup.save(), GROUP.save()]);
     return result;
+ };
+ */
+GROUPSCHEMA.statics.addMeetup = async function (id, args) {
+    const MEETUP = mongoose.model('Meetup');
+    // we add the group id to the meetup group element
+    // finally this group id is the author of the meetup
+    const meetup = await new MEETUP({
+        ...args, group: id
+    });
+    const group = await this.findByIdAndUpdate(
+            id,
+            {$push: {meetups: meetup.id}}
+    );
+    return {
+        meetup: await meetup.save(),
+        group
+    };
 };
 export default mongoose.model('Group', GROUPSCHEMA);
 
