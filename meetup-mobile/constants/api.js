@@ -12,10 +12,7 @@ class MeetApi {
         this.path = `/groups/${this.groupId}/meetups`;
     }
     async fetchGroupMeetups() {    
-        console.log('masih');
-        console.log('path', this.path);
         const {data} = await axios.get(this.path);
-        console.log('date', data);
         return data.meetups;
     }
 }
