@@ -3,6 +3,7 @@ import {View, Text} from 'react-native';
 import MeetupApi from '../../../constants/api';
 import styles from './styles/HomeScreen';
 import {LoadingScreen} from '../../commons';
+import {MyMeetupList} from './components';
 const MEETUPAPI = new MeetupApi();
 class HomeScreen extends Component {
     static defaultProps = {
@@ -28,7 +29,12 @@ class HomeScreen extends Component {
         }
         return (
                 <View style = {styles.root}>
-                    <Text> Home Screen</Text>
+                    <View style={styles.topContainer}>
+                        <Text> Home Screen</Text>
+                    </View>
+                    <View style={styles.buttomContainer}>
+                            <MyMeetupList meetups={this.state.meetups}/>                            
+                    </View>                    
                 </View>
                 );
     }

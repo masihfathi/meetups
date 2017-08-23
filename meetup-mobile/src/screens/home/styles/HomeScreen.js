@@ -4,6 +4,17 @@ const styles = EStyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         backgroundColor: '$blackBlueColor'
+    },
+    topContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: 'red',
+        alignItems: 'center'
+    },
+    buttomContainer: {
+        flex: .8,
+        justifyContent: 'center',
+        backgroundColor: 'blue'
     }
 });
 export default styles;
