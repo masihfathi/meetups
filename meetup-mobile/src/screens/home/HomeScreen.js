@@ -30,7 +30,7 @@ class HomeScreen extends Component {
         return (
                 <View style = {styles.root}>
                     <View style={styles.topContainer}>
-                        <Text> Home Screen</Text>
+                        <Text style={styles.textContainer}> Home Screen</Text>
                     </View>
                     <View style={styles.buttomContainer}>
                             <MyMeetupList meetups={this.state.meetups}/>                            

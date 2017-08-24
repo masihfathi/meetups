@@ -8,13 +8,17 @@ const styles = EStyleSheet.create({
     topContainer: {
         flex: 1,
         justifyContent: 'center',
-        backgroundColor: 'red',
+        //backgroundColor: 'red',
         alignItems: 'center'
     },
     buttomContainer: {
         flex: .8,
         justifyContent: 'center',
-        backgroundColor: 'blue'
+        //backgroundColor: 'blue'
+    },
+    textContainer: {
+        color:'$whiteColor',
+        fontFamily:'DancingBold'
     }
 });
 export default styles;
