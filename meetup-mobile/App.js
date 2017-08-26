@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import  EStyleSheet from 'react-native-extended-stylesheet';
 import Colors from './constants/Colors';
-import  {HomeScreen} from './src/screens';
+import  Root from './src/Roots';
 import  {cachedFonts} from './helpers';
 import {AppLoading} from 'expo';
 EStyleSheet.build(Colors);
@@ -31,7 +31,7 @@ export default class App extends Component {
          return (<AppLoading/>);
          }
         return (
-                <HomeScreen />
+                <Root />
                 );
     }
 }
