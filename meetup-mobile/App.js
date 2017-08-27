@@ -16,6 +16,9 @@ export default class App extends Component {
             },
             {
                 DancingBold: require('./assets/fonts/Dancing/DancingScript-Bold.ttf')
+            },
+            {
+                fanteziFarsi: require('./assets/fonts/fantezi-farsi/Far_Fantezy.ttf')
             }
         ]);
         await Promise.all(fontAssets);

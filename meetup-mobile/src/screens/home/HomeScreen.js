@@ -1,11 +1,17 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text,Image} from 'react-native';
 import MeetupApi from '../../../constants/api';
 import styles from './styles/HomeScreen';
 import {LoadingScreen} from '../../commons';
 import {MyMeetupList} from './components';
+import { FontAwesome } from '@expo/vector-icons';
 const MEETUPAPI = new MeetupApi();
 class HomeScreen extends Component {
+    static navigationOptions = {
+      tabBarIcon: ()=> (
+        <FontAwesome name="home" size={25}/>      
+      )        
+    }
     static defaultProps = {
         MEETUPAPI
     }
@@ -33,7 +39,7 @@ class HomeScreen extends Component {
                         <Text style={styles.textContainer}> Home Screen</Text>
                     </View>
                     <View style={styles.buttomContainer}>
-                            <MyMeetupList meetups={this.state.meetups}/>                            
+                        <MyMeetupList meetups={this.state.meetups}/>                            
                     </View>                    
                 </View>
                 );
